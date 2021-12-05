@@ -1,0 +1,36 @@
+Contract for Hello World
+
+
+access(all) contract HelloWorld {
+
+// 
+// state - what is stored on the blockchain
+//
+    access(all) var  greeting: String
+
+//
+//logic
+//
+    access(all) fun hello(): String {
+        return self.greeting
+    }
+
+//Transaction for changing the greeting
+    access(all) fun changeGreeting() {  
+        self.greeting = "Goodbye, world!"
+    }
+
+    init() {
+        self.greeting = "Hello, World!"
+    }
+
+}
+
+
+//script.cdc
+
+import HelloWorld from 0x01
+
+pub fun main() {
+  log(HelloWorld.hello())
+}
